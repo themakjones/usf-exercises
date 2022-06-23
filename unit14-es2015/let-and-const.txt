@@ -1,0 +1,7 @@
+ES2015 Version: 
+const PI = 3.14;
+
+1. Var can be redifined and has a function scope while let cannot be redifiend and has a block scope
+2. Var can be redifiend, reassined, and has a function scope. Const cannot be redifiend or reassined, and has a block scope
+3. Let can be reassined, const cannot
+4. Hoisting refers to how the compiler behaves with var. A var variable is set before it is defined. Before it is defined, the var variable is equal to undefined.

@@ -1,0 +1,5 @@
+1. git branch branch_name
+2. Fast forward is when commits are made chronologically and recursive is when they are not chronological
+3. git checkeout branch_name
+4. git branch -d deletes a merged branch git branch -D deletes a branges regardless if it has been merged
+5. Merge conflicts happen when different commits are made on both the master and the branch you are trying to merge.

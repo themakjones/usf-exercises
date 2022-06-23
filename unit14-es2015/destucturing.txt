@@ -1,0 +1,48 @@
+Object 1
+8
+1846
+
+Object 2
+{yearneptuneDiscovered: 1846, yearMarsDiscovered : 1659}
+
+Object 3
+`Your name is Alejandro and you like purple`
+`Your name is Melissa and you like green`
+`Your name is undefined and you like green`
+
+Array 1
+"Maya"
+"Marissa"
+"Chi"
+
+Array 2
+"Raindrops on roses"
+"whiskers on kittens"
+["Bright copper kettles", "warm woolen mittens", "Brown paper packages tied up with strings"]
+
+Array 3
+[10, 30, 20]
+
+ES2015 Object Destructuring
+const obj = {
+    numbers : {
+        a: 1,
+        b: 2
+    }
+}:
+const {obj: {a,b}} = obj
+
+ES2015 Array Swap
+[arr[0], arr[1]] = [arr[1], arr[0]]
+
+raceResults
+const raceResults = arr => {
+    let [first, second, third, ...rest] = arr;
+    return {
+        first,
+        second,
+        third,
+        rest
+    };
+}
+ 

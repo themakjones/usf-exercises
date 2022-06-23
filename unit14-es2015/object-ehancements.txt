@@ -1,0 +1,33 @@
+ES2015 version
+Same keys and values
+const createInstructor = (firstName, lastName) => {
+    return {
+        firstName,
+        lastName
+    };
+}
+Computed Property Names
+const instructor = {
+    firstName : `Colt`,
+    [favoriteNumber] : `That is my favorite`
+};
+Object Methods
+const instructor = {
+    firstName : `Colt`,
+    sayHi() {
+        return `Hi!`;
+    },
+    sayBye() = {
+        return this.firstName + ` says bye!`;
+    }
+}
+createAnimal function
+const createAnimal = (species, verb, noise) => {
+    const obj = {
+        species,
+        [verb]() = {
+            return noise;
+        }
+    };
+    return obj;
+}

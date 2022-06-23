@@ -1,0 +1,11 @@
+ES2015 Arrow Shrothand: 
+const double = arr => arr.map(val => val *2);
+
+Refactor the following:
+const squareAndFindEvens = numbers => {
+    const squares = numbers.map( num => num ** 2);
+    const evens = squares.filter(square => square % 2 === 0);
+};
+
+
+

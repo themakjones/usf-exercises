@@ -12,5 +12,7 @@ $('#rating-form').on(`submit`, function(e) {
 
 //When the button to remove is clicked, remove each title and rating from the DOM.
 $(`#rating-list`).on(`click`,`.new-rating`, function(e) {
-    console.log(e.target.parent());
+    if (e.target !== e.currentTarget) {
+        $(e.currentTarget).remove();
+    };
 });

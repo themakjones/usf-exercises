@@ -1,0 +1,22 @@
+What is HTTP?
+- Hyper Text Transfer Protocol
+What is a URL?
+- Address for a website on the internet
+What is DNS?
+- Domain Name System: takes a url and converts it into an IP address
+What is a query string?
+- Used to set values to a key within the url
+What are two HTTP verbs and how are they different?
+- GET retrieves data without changing anything on the server and PUSH sends data to the server to be changed
+What is an HTTP request?
+- A request sent to a server that follows the http protocol
+What is an HTTP response?
+- What you get back when making a request
+What is an HTTP header? Give a couple examples of request and response headers you have seen.
+- A header provides additional information in a request or response. 
+- Request header ex: Host
+- Response header ex: Last Modified
+What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+- Browser turns url into ip address using DNS
+- Sends request to server and receives a response
+- Uses the response to make a page from the html/css/js 

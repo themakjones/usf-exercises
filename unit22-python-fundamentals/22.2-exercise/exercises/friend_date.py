@@ -16,3 +16,13 @@ def friend_date(a, b):
         >>> friend_date(sauron, gandalf)
         True
     """
+    a_name, a_age, a_hobbies = a
+    b_name, b_age, b_hobbies = b
+
+    if set(a_hobbies) & set(b_hobbies):
+        return True
+    else:
+        return False
+
+print(friend_date(('Elmo', 5, ['hugging', 'being nice']),('Sauron', 5000, ['killing hobbits', 'chess'])))
+print(friend_date(('Sauron', 5000, ['killing hobbits', 'chess']),('Gandalf', 10000, ['waving wands', 'chess'])))

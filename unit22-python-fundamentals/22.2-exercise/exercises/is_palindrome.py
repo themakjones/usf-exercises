@@ -21,3 +21,19 @@ def is_palindrome(phrase):
         >>> is_palindrome('Noon')
         True
     """
+    
+    no_spaces = phrase.replace(' ','')
+    l_phrase = list(no_spaces.lower())
+    l_reverse = l_phrase.copy()
+    l_reverse.reverse()
+
+    if l_phrase == l_reverse:
+        return True
+    else:
+        return False
+        
+print(is_palindrome('tacocat'))
+print(is_palindrome('noon'))
+print(is_palindrome('robert'))
+print(is_palindrome('taco cat'))    
+print(is_palindrome('Noon'))

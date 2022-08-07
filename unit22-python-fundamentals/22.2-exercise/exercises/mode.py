@@ -17,11 +17,9 @@ def mode(nums):
 
     for num in nums:
         if nums.count(num) > high_count:
-            print(high_count)
-            # high_count = nums.count(num)
-            # curr_mode = num
-    
-    # return curr_mode
+            high_count = nums.count(num)
+            curr_mode = num
+    return curr_mode
 
-    print(mode([1,2,1]))
-    print(mode([2,2,3,3,2]))
+print(mode([1,2,1]))
+print(mode([2,2,3,3,2]))

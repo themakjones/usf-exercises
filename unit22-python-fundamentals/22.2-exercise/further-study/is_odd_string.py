@@ -29,3 +29,17 @@ def is_odd_string(word):
     """
 
     # Hint: you may find the ord() function useful here
+
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+    ltr_pos = {ltr: letters.index(ltr) + 1 for ltr in letters}
+    total = 0
+
+    for ltr in word.lower():
+        total += ltr_pos[ltr]
+    return total % 2 == 1
+
+print(is_odd_string('a'))
+print(is_odd_string('A'))
+print(is_odd_string('aaaa'))
+print(is_odd_string('AAaa'))
+print(is_odd_string('amazing'))

@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, flash
+from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import satisfaction_survey
 
@@ -35,11 +35,27 @@ def start_survey(question_num):
 def add_answer():
     global curr_question 
     answer = request.form['option']
+
+    # responses = session['responses']
     responses.append(answer)
+    session['responses'] = responses
+
     curr_question += 1
     return redirect(f'/question/{curr_question}')
 
 @app.route('/thank-you')
 def say_thanks():
-    # return render_template('thanks.html')
-    return responses
+    return render_template('thanks.html')
+
+@app.route('/new-survey', methods=["POST"])
+def start_new_survey():
+    global curr_question, responses
+
+    curr_question = 0
+    responses = []
+    session['responses'] = []
+    return redirect("/question/0")
+
+@app.route('/restart')
+def restart_survey():
+    return redirect('/')

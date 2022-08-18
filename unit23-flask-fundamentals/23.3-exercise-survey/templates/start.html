@@ -3,7 +3,7 @@
 
 <h2>{{ survey_title }}</h2>
 <p>{{ instructions }}</p>
-<form action="/question/0">
+<form action="/new-survey" method="POST">
   <button type="submit">Start Survey</button>
 </form>
 {% endblock %}

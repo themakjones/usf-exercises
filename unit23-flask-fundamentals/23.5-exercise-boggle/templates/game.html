@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content%}
+<div class="game-board">
+  <ul>
+    {% for row in board %}
+    <li>{{ row }}</li>
+    {% endfor %}
+  </ul>
+  <div class="guess-form">
+    <form action="">
+      <input type="text" placeholder="Guess a word" class="guess-input" />
+      <button>Submit Guess</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

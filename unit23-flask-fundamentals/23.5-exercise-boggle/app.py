@@ -15,7 +15,7 @@ def start_page():
     session['game-board'] = game_board
     return render_template('game.html', board=session['game-board'])
 
-@app.route('/guess', method=['POST'])
+@app.route('/guess')
 def eval_guess():
     guess = request.args['word']
     res = boggle_game.check_valid_word(game_board, guess)

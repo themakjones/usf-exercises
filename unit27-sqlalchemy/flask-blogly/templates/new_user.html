@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <h2>Add New User</h2>
-<form method="POST">
+<form action="/users/new" method="POST">
   <p>First Name : <input type="text" name="first-name" /></p>
   <p>Last Name: <input type="text" name="last-name" /></p>
   <p>Profile Image: <input type="text" name="img-url" /></p>

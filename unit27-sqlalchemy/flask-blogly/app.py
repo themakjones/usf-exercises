@@ -43,7 +43,7 @@ def add_user():
         new_user = User(first_name=first_name, last_name=last_name, image_url=img_url)
         db.session.add(new_user)
         db.session.commit()
-        full_name = new_user.get_full_name()
+        full_name = new_user.full_name
 
         flash(f"New user: {full_name} added!")
         return redirect('/users')
@@ -69,7 +69,7 @@ def edit_user(user_id):
         db.session.add(user)
         db.session.commit()
 
-        flash(f"{user.get_full_name()}'s profile has been changed")
+        flash(f"{user.full_name}'s profile has been changed")
         return redirect('/users')
 
     return render_template('edit_user.html', user=user)

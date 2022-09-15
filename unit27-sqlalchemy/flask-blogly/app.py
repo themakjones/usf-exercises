@@ -60,7 +60,31 @@ def user_profile_page(user_id):
 @app.route('/users/<int:user_id>/edit', methods=['POST', 'GET'])
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
+    if request.method == 'POST':
+        user.first_name = request.form['first-name']
+        user.last_name = request.form['last-name']
+        img_url = request.form['img-url']
+        user.img_url = img_url if img_url else None
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash(f"{user.get_full_name()}'s profile has been changed")
+        return redirect('/users')
+
     return render_template('edit_user.html', user=user)
+
+@app.route('/users/<int:user_id>/delete')
+def delete_user(user_id):
+
+    
+    user = User.query.filter_by(id=user_id)
+    user.delete()
+    db.session.commit()
+
+    flash('Profile has been deleted')
+    return redirect('/users')
+
 
 
     

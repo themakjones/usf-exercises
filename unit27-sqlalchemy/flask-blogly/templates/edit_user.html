@@ -9,6 +9,11 @@
   <input type="text" name="last-name" value="{{ user.last_name }}" />
   <label for="img-url">Image URL</label>
   <input type="text" name="img-url" value="{{ user.image_url }}" />
+  <input type="submit" value="Save Changes" />
 </form>
+
+<a href="/users/{{ user.id }}">
+  <button>Cancel</button>
+</a>
 
 {% endblock %}

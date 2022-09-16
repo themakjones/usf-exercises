@@ -1,6 +1,7 @@
 """Models for Blogly."""
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 import datetime
 
 db = SQLAlchemy()
@@ -22,7 +23,7 @@ class User(db.Model):
         full_name = ' '.join([self.first_name, self.last_name])
         return full_name
 
-    posts = db.relationship('Post', backref='user')
+    posts = db.relationship('Post', back_populates='user', cascade='all, delete')
 
 
 class Post(db.Model):
@@ -35,6 +36,8 @@ class Post(db.Model):
     content = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user = db.relationship('User', back_populates='posts')
 
     @property
     def friendly_date(self):

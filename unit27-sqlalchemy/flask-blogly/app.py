@@ -84,8 +84,8 @@ def edit_user(user_id):
 def delete_user(user_id):
 
     
-    user = User.query.filter_by(id=user_id)
-    user.delete()
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
     db.session.commit()
 
     flash('Profile has been deleted')

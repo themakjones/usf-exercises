@@ -16,6 +16,12 @@ debug = DebugToolbarExtension(app)
 connect_db(app)
 db.create_all()
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """Renders custom 404 page wher there is a 404 error"""
+    
+    return render_template('404.html'), 404
+
 @app.route('/')
 def home_page():
     """Home page"""

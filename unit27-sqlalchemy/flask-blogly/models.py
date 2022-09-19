@@ -45,6 +45,23 @@ class Post(db.Model):
 
         return self.created_at.strftime('%A, %b %m, %Y, %I:%M %p')
 
+class Tag(db.Model):
+    """Tag model. can be assigned to a post"""
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(25), nullable=False, unique=True)
+
+class PostTag(db.Model):
+    """Mapping of tags to posts"""
+
+    __tablename__ = 'posttags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+
 
 def connect_db(app):
     """Connect to database"""

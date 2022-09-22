@@ -5,10 +5,14 @@ block content %}
 {% for pet in pets %}
 <div>
   <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" />
-  <h2>{{ pet.name }}</h2>
+  <h2>
+    <a href="/{{ pet.id }}">{{ pet.name }}</a>
+  </h2>
   <ul>
     <li>{{ pet.age }}</li>
     <li>{{ pet.breed }}</li>
   </ul>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+<a href="/add">Add Pet</a>
+{% endblock %}

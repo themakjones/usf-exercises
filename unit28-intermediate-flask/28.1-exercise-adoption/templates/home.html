@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %}MJ Adoption Center{% endblock %} {%
+block content %}
+<h1>Pets for Adoption</h1>
+
+{% for pet in pets %}
+<div>
+  <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" />
+  <h2>{{ pet.name }}</h2>
+  <ul>
+    <li>{{ pet.age }}</li>
+    <li>{{ pet.breed }}</li>
+  </ul>
+</div>
+{% endfor %} {% endblock %}

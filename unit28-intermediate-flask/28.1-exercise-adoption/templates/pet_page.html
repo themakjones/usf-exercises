@@ -12,6 +12,16 @@ content %}
       <li>Age: {{ pet.age }}</li>
     </ul>
   </div>
+  <form method="POST" id="add-pet-form">
+    {{ form.hidden_tag() }}
+
+    <div>
+      {{ form.photo_url.label }} {{ form.photo_url }} {% for error in
+      form.photo_url.errors %} {{ error }} {% endfor %}
+    </div>
+    <div>{{ form.notes.label }} {{ form.notes }}</div>
+    <button type="submit">Submit</button>
+  </form>
 </div>
 
 {% endblock %}

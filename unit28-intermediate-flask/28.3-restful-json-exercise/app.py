@@ -16,6 +16,14 @@ debug = DebugToolbarExtension(app)
 connect_db(app)
 db.create_all()
 
+@app.route("/")
+def index_page():
+    """Renders page listing cupcakes"""
+
+    cupcakes = Cupcake.query.all()
+
+    return render_template('index.html', cupcakes=cupcakes)
+
 @app.route('/api/cupcakes')
 def list_cupcakes():
     """List all cupcakes"""

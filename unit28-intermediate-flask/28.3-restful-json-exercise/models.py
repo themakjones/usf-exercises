@@ -20,7 +20,7 @@ class Cupcake(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     flavor = db.Column(db.String(25), nullable=False)
-    size = db.Column(db.String(5), nullable=False)
+    size = db.Column(db.String(20), nullable=False)
     rating = db.Column(db.Float, nullable=False)
     image = db.Column(db.String, nullable=False, default=Default_Img)
 

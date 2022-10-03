@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
 
@@ -46,3 +47,16 @@ class User(db.Model):
             return user
         else:
             return False
+
+        posts = db.relationship('Post', back_populates='user', cascade='all, delete')
+
+class Feedback(db.Model):
+    
+    __tablename__ = 'feedback'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    username = db.Column(db.String(20), db.ForeignKey('users.username'))
+
+    user = db.relationship('User', back_populates='feedback')

@@ -53,8 +53,9 @@ def login_user():
         username = form.username.data
         password = form.password.data
 
-        authenticate = User.authenticate(username, password)
-        if authenticate:
+        user = User.authenticate(username, password)
+        if user:
+            session["user_id"] = user.id
             return redirect('/secret')
         else:
             flash('Incorrect username or password. Please try again')
@@ -64,5 +65,28 @@ def login_user():
 
 @app.route('/secret')
 def secret_page():
+    """Shows secret page if user is logged in"""
+
+    if "user_id" not in session:
+        flash("You must be logged in to view that page")
+        return redirect("/")
     return render_template('secret.html')
+
+@app.route("/logout")
+def logout_user():
+    """Logs out user"""
+
+    session.pop('user_id')
+    return redirect('/')
+
+@app.route('/users/<int:user_id>')
+def user_page(user_id):
+    """User profile page"""
+
+    user = User.query.get_or_404(user_id)
+    if "user_id" not in session:
+        flash("You must be logged in to view that page")
+        return redirect("/")
+
+    return render_template('user_page.html', user=user)
 

@@ -12,4 +12,20 @@ const countdown = num => {
     }, time);
 }
 
-countdown(4);
+
+const randomGame = () => {
+    let counter = 0;
+    let randomNum;
+
+    let interval = setInterval(() => {
+        randomNum = Math.random();
+        counter ++;
+        console.log(randomNum)
+
+        if (randomNum > .75) {
+            console.log(`It took ${counter} tries`);
+            clearInterval(interval);
+        }
+
+    }, 1000)
+}

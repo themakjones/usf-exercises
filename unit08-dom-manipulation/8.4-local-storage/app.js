@@ -13,9 +13,6 @@ form.addEventListener(`submit`, function (e) {
 
   updateLocalStorage();
 
-  console.log(`todo list: ${toDoList}`);
-  console.log(`completed list: ${completedList}`);
-
   form.reset();
 });
 
@@ -35,8 +32,6 @@ ul.addEventListener(`click`, function (e) {
   }
 
   updateLocalStorage();
-  console.log(`todo list: ${toDoList}`);
-  console.log(`completed list: ${completedList}`);
 });
 
 const checkCompletion = (target) => {
@@ -84,9 +79,15 @@ const checkLocalStorage = () => {
   }
 };
 
-const addStorageTodo = () => {};
-
-checkLocalStorage();
+const addStorageTodos = () => {
+  toDoList.forEach((val) => {
+    createTodo(val);
+  });
+  completedList.forEach((val) => {
+    createTodo(val);
+    ul.lastElementChild.classList.add("completed");
+  });
+};
 
 const createTodo = (val) => {
   // let newToDo = document.querySelector(`#addToDo`).value;
@@ -102,6 +103,7 @@ const createTodo = (val) => {
   newLi.append(removeButton);
 
   ul.append(newLi);
-
-  return;
 };
+
+checkLocalStorage();
+addStorageTodos();

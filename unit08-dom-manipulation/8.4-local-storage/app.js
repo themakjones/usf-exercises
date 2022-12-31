@@ -2,77 +2,94 @@ let toDoList = [];
 let completedList = [];
 
 const form = document.querySelector(`form`);
-    let ul = document.querySelector(`#toDoList`);
-    // Add To Do item (does not save on reload)
-form.addEventListener(`submit`, function(e) {
-    e.preventDefault();
-    let newToDo = document.querySelector(`#addToDo`).value;
-    let newLi = document.createElement(`li`);
-    let removeButton = document.createElement(`button`);
-    let newDiv = document.createElement('div');
+let ul = document.querySelector(`#toDoList`);
+// Add To Do item (does not save on reload)
+form.addEventListener(`submit`, function (e) {
+  e.preventDefault();
+  let newToDo = document.querySelector(`#addToDo`).value;
+  let newLi = document.createElement(`li`);
+  let removeButton = document.createElement(`button`);
+  let newDiv = document.createElement("div");
 
-    newDiv.innerText = newToDo;
-    newDiv.classList.add('todo-item')
+  newDiv.innerText = newToDo;
+  newDiv.classList.add("todo-item");
 
-    newLi.append(newDiv);
-    newLi.append(removeButton);
-    ul.append(newLi);
-    removeButton.innerText = `Remove`;
-    toDoList.push(newToDo);
+  newLi.append(newDiv);
+  newLi.append(removeButton);
+  ul.append(newLi);
+  removeButton.innerText = `Remove`;
+  toDoList.push(newToDo);
 
-    console.log(`todo list: ${toDoList}`)
-    console.log(`completed list: ${completedList}`)
+  updateLocalStorage();
 
-    form.reset();
-})
+  console.log(`todo list: ${toDoList}`);
+  console.log(`completed list: ${completedList}`);
 
-// Strikethrough completed item 
+  form.reset();
+});
 
-ul.addEventListener(`click`, function(e) {
-    const targetTag = e.target.tagName.toLowerCase();
+// Strikethrough completed item
 
-    if (e.target.classList.contains('todo-item')) {
+ul.addEventListener(`click`, function (e) {
+  const targetTag = e.target.tagName.toLowerCase();
 
-        checkCompletion(e.target);
+  if (e.target.classList.contains("todo-item")) {
+    checkCompletion(e.target);
+  } else if (targetTag === `button`) {
+    const todo = e.target.previousElementSibling.innerText;
 
-    } else if (targetTag === `button`) {
+    removeItem(toDoList, todo);
+    removeItem(completedList, todo);
+    e.target.parentNode.remove();
+  }
 
-        const todo = e.target.previousElementSibling.innerText;
-        
-        removeItem(toDoList, todo);
-        removeItem(completedList, todo);
-        e.target.parentNode.remove();
-    }
-
-    console.log(`todo list: ${toDoList}`)
-    console.log(`completed list: ${completedList}`)
-})
+  updateLocalStorage();
+  console.log(`todo list: ${toDoList}`);
+  console.log(`completed list: ${completedList}`);
+});
 
 const checkCompletion = (target) => {
+  if (target.classList.contains("completed")) {
+    removeItem(completedList, target.innerText);
+    toDoList.push(target.innerText);
 
-    if (target.classList.contains('completed')) {
-    
-        removeItem(completedList, target.innerText);
-        toDoList.push(target.innerText);
-        
-        target.classList.remove('completed');
+    target.classList.remove("completed");
+  } else {
+    removeItem(toDoList, target.innerText);
+    completedList.push(target.innerText);
 
-    } else {
-    
-        removeItem(toDoList, target.innerText);
-        completedList.push(target.innerText);
-        
-        target.classList.add('completed');
-    }
-}
+    target.classList.add("completed");
+  }
+  updateLocalStorage();
+};
 
 const removeItem = (arr, val) => {
-    const idx = arr.indexOf(val);
+  const idx = arr.indexOf(val);
 
-    if (idx > -1) {
-        arr.splice(idx, 1);
+  if (idx > -1) {
+    arr.splice(idx, 1);
 
-        return arr;
-    }
-}
+    return arr;
+  }
+};
 // add items to local storage
+
+const updateLocalStorage = () => {
+  localStorage.setItem("todoList", JSON.stringify(toDoList));
+  localStorage.setItem("completedList", JSON.stringify(completedList));
+};
+
+const checkLocalStorage = () => {
+  let todoStorage = JSON.parse(localStorage.getItem("todoList"));
+  let completedStorage = JSON.parse(localStorage.getItem("completedList"));
+
+  if (todoStorage && completedStorage) {
+    toDoList = JSON.parse(localStorage.getItem("todoList"));
+    completedList = JSON.parse(localStorage.getItem("completedList"));
+  } else if (todoStorage) {
+    toDoList = JSON.parse(localStorage.getItem("todoList"));
+  } else if (completedStorage) {
+    completedList = JSON.parse(localStorage.getItem("completedList"));
+  }
+};
+checkLocalStorage();

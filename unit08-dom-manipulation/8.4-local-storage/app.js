@@ -6,18 +6,9 @@ let ul = document.querySelector(`#toDoList`);
 // Add To Do item (does not save on reload)
 form.addEventListener(`submit`, function (e) {
   e.preventDefault();
+
   let newToDo = document.querySelector(`#addToDo`).value;
-  let newLi = document.createElement(`li`);
-  let removeButton = document.createElement(`button`);
-  let newDiv = document.createElement("div");
-
-  newDiv.innerText = newToDo;
-  newDiv.classList.add("todo-item");
-
-  newLi.append(newDiv);
-  newLi.append(removeButton);
-  ul.append(newLi);
-  removeButton.innerText = `Remove`;
+  createTodo(newToDo);
   toDoList.push(newToDo);
 
   updateLocalStorage();
@@ -92,4 +83,25 @@ const checkLocalStorage = () => {
     completedList = JSON.parse(localStorage.getItem("completedList"));
   }
 };
+
+const addStorageTodo = () => {};
+
 checkLocalStorage();
+
+const createTodo = (val) => {
+  // let newToDo = document.querySelector(`#addToDo`).value;
+  let newLi = document.createElement(`li`);
+  let removeButton = document.createElement(`button`);
+  let newDiv = document.createElement("div");
+
+  newDiv.innerText = val;
+  newDiv.classList.add("todo-item");
+  newLi.append(newDiv);
+
+  removeButton.innerText = `Remove`;
+  newLi.append(removeButton);
+
+  ul.append(newLi);
+
+  return;
+};

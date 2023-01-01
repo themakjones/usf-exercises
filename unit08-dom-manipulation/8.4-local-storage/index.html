@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>ToDo List</h1>
-    <form> <input type="text" id="addToDo"> <button>Add Item</button>
-    </form>
-    <p>
-        <ul id="toDoList"></ul>
-    </p>
-<script src="app.js"></script>
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/eb6bca3ba5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>ToDo List</h1>
+      <form>
+        <input type="text" id="addToDo" />
+        <button type="submit"><i class="fa-solid fa-plus"></i></button>
+      </form>
+    </div>
+    <div class="todo-container">
+      <ul id="toDoList"></ul>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>

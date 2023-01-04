@@ -39,13 +39,15 @@ body {
   color: #638bc8;
 }
 
-h1 {
+button {
+  background-color: #638bc8;
+  color: white;
+  font-size: 15px;
   /* color: white; */
 }
 
-button {
-  /* background-color: black; */
-  color: #638bc8;
-  font-size: 15px;
-  /* color: white; */
+input {
+  background-color: #638bc8;
+  color: white;
+  border: none;
 }

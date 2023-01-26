@@ -48,11 +48,11 @@ function calculateMonthlyPayment(values) {
   let monthlyPayment =
     (principle * interest) / (1 - (1 + interest) ** -numPayments);
 
-  return monthlyPayment;
+  return monthlyPayment.toFixed(2);
 }
 
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
-  document.getElementById("monthly-payment").innerText = monthly.toFixed(2);
+  document.getElementById("monthly-payment").innerText = monthly;
 }

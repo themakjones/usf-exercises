@@ -1,3 +1,5 @@
+const ExpressError = require("./expressError");
+
 function findMean(nums) {
   let numsTotal = 0;
 
@@ -50,4 +52,21 @@ function findMedian(nums) {
   }
 }
 
-console.log(findMode([1, 2, 1, 3, 4, 2, 3, 3]));
+function validateAndConfigNums(nums) {
+  if (!nums) throw new ExpressError("Numbers are required", 400);
+
+  numsArr = nums.split(",");
+  let newArr = numsArr.map((num) => {
+    return Number(num);
+  });
+
+  newArr.forEach((num) => {
+    if (!num) throw new ExpressError("Only numbers are allowed", 400);
+  });
+
+  return newArr;
+}
+
+// console.log(validateAndConfigNums("1,3,45,foo"));
+
+module.exports = {findMean, findMedian, findMode, validateAndConfigNums};
